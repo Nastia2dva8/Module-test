@@ -26,3 +26,8 @@ def test_count_words_and_sentences(temp_file, content, expected_words, expected_
     assert result['word_count'] == expected_words
     assert result['sentence_count'] == expected_sentences
 
+# Тест для неіснуючого файлу
+def test_file_not_found(temp_file):
+    non_existent_file = temp_file.with_name("non_existent.txt")
+    result = count_words_and_sentences(non_existent_file)
+    assert result == "Файл не знайдено"
